@@ -1,0 +1,48 @@
+<!-- <p>job-listing works!</p> -->
+<form [formGroup]="jobListingForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="jobTitle">Job Title:</label>
+      <input id="jobTitle" formControlName="jobTitle" type="text" />
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description"></textarea>
+    </div>
+    <div>
+      <label for="location">Location:</label>
+      <input id="location" formControlName="location" type="text" />
+    </div>
+    <div>
+      <label for="requiredSkills">Required Skills</label>
+      <input id="requiredSkills" formControlName="requiredSkills" type="text" />
+    </div>
+    <div>
+      <label for="salary">Salary:</label>
+      <input id="salary" formControlName="salary" type="text" />
+    </div>
+    <div>
+      <label for="jobType">Job Type:</label>
+      <select id="jobType" formControlName="jobType">
+        <option value="">Select</option>
+        <option value="Full-Time">Full-Time</option>
+        <option value="Part-Time">Part-Time</option>
+        <option value="Contract">Contract</option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="jobListingForm.invalid">Submit</button>
+  </form>
+
+  <!-- Button to fetch data from localStorage -->
+<button (click)="fetchData()">Fetch Job Listing Data</button>
+
+<!-- Display fetched job listing data -->
+<div *ngIf="fetchedJobListing">
+  <h3>Stored Job Listing Details:</h3>
+  <p>Job Title: {{ fetchedJobListing.jobTitle }}</p>
+  <p>Description: {{ fetchedJobListing.description }}</p>
+  <p>Location: {{ fetchedJobListing.location }}</p>
+  <p>Required Skills: {{ fetchedJobListing.requiredSkills }}</p>
+  <p>Salary: {{ fetchedJobListing.salary }}</p>
+  <p>Job Type: {{ fetchedJobListing.jobType }}</p>
+</div>
+  
